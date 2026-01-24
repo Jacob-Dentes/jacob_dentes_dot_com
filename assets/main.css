@@ -1,0 +1,220 @@
+/* App-wide styling */
+:root {
+    --bg0: #282828;
+    --fg: #ebdbb2;
+    --fg1: #d5c4a1;
+    --aqua: #689d6a;
+    --purple: #b16286;
+    --orange: #d65d0e;
+
+    --override-default: false;
+
+    --aqua-filter: brightness(0) saturate(100%) invert(60%) sepia(12%) saturate(1246%) hue-rotate(73deg) brightness(92%) contrast(79%);
+    --purple-filter: brightness(0) saturate(100%) invert(46%) sepia(71%) saturate(285%) hue-rotate(281deg) brightness(86%) contrast(96%);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg0: #fbf1c7;
+        --fg: #3c3836;
+        --fg1: #504945;
+        --aqua: #689d6a;
+        --purple: #b16286;
+        --orange: #d65d0e;
+
+        --aqua-filter: brightness(0) saturate(100%) invert(60%) sepia(12%) saturate(1246%) hue-rotate(73deg) brightness(92%) contrast(79%);
+        --purple-filter: brightness(0) saturate(100%) invert(46%) sepia(71%) saturate(285%) hue-rotate(281deg) brightness(86%) contrast(96%);
+    }
+}
+
+.h1 {
+    color: var(--fg);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.h2 {
+    color: var(--fg1);
+    font-size: 25px;
+}
+
+p {
+    font-size: 20px;
+}
+
+button.linklike {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fg);
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline;
+}
+
+button.linklike:focus {
+    outline: 1px dotted;
+    outline-offset: 2px;
+}
+
+button.linklike:hover,
+button.linklike:active {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+
+.highlighted {
+    color: var(--orange);
+    cursor: pointer;
+}
+
+.link {
+    color: var(--aqua);
+    cursor: pointer;
+    font-size: 25px;
+    transition: filter 150ms ease;
+}
+
+a.link:hover {
+    color: var(--purple);
+}
+
+html, body {
+    background-color: var(--bg0);
+    color: var(--fg);
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+}
+
+#hero {
+    box-sizing: border-box;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+#navigation {
+    width: 100%;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+#navigation-separation {
+    background-color: var(--fg1);
+    flex-shrink: 0;
+    height: 2px;
+    width: 100%;
+}
+
+#home, #cv {
+    box-sizing: border-box;
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sub-home {
+    margin: 20px;
+    max-width: 50%;
+    max-height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: left;
+    justify-content: left;
+    min-width: 0;
+}
+
+.sub-home img {
+    max-width: 256px;
+    max-height: 256px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    #home {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .sub-home {
+        flex: 1 1 auto;
+        max-width: 90vw;
+        width: 100%;
+        min-height: 0;
+    }
+}
+
+.link-ico {
+    flex: 0 0 auto;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    object-fit: contain;
+    width: 32px;
+    height: 32px;
+    display: block;
+    filter: var(--aqua-filter);
+    transition: color 150ms ease;
+}
+
+a.link:hover img.link-ico {
+    filter: var(--purple-filter);
+}
+
+#cv iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#links {
+    width: 400px;
+    text-align: left;
+    font-size: x-large;
+    color: var(--fg);
+    display: flex;
+    flex-direction: column;
+}
+
+#links a {
+    color: var(--fg);
+    text-decoration: none;
+    margin-top: 20px;
+    margin: 10px 0px;
+    border: white 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#links a:hover {
+    background-color: #504945;
+    cursor: pointer;
+}
+
+
+
