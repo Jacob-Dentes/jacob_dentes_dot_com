@@ -167,7 +167,6 @@ html, body {
 .sub-home {
     margin: 20px;
     max-width: 50%;
-    max-height: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -189,13 +188,15 @@ html, body {
 @media (max-width: 768px) {
     #home {
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: flex-start;
+        overflow-y: auto;
+        gap: 32px;
     }
     .sub-home {
-        flex: 1 1 auto;
+        flex: 0 0 auto;
         max-width: 90vw;
         width: 100%;
-        min-height: 0;
+        min-height: min-content;
     }
 }
 
@@ -232,8 +233,7 @@ a.link:hover img.link-ico {
 #links a {
     color: var(--fg);
     text-decoration: none;
-    margin-top: 20px;
-    margin: 10px 0px;
+    margin: 10px 0;
     border: white 1px solid;
     border-radius: 5px;
     padding: 10px;
