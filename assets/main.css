@@ -27,22 +27,38 @@
     }
 }
 
+/* .h1/.h2 are pure type styles, applied to real heading tags. Zero the user-agent
+   margins so the tag change doesn't shift the layout. */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
 .h1 {
     color: var(--fg);
     font-size: 30px;
     font-weight: bold;
 }
 
+/* .h2 also styles non-bold text (the tagline, the nav), but a real <h2> is bold
+   by default, so the weight has to be stated rather than inherited. */
 .h2 {
     color: var(--fg1);
     font-size: 25px;
+    font-weight: normal;
 }
 
 p {
     font-size: 20px;
 }
 
-button.linklike {
+.tagline {
+    margin: 0;
+}
+
+/* Nav and in-content links are anchors now, but keep the element qualifier: the
+   bare class would tie `.link` below, which is declared later and would win the
+   color cascade on elements carrying both (the "Back to Hobbies" link). */
+button.linklike, a.linklike {
     background: none;
     border: none;
     padding: 0;
@@ -54,19 +70,19 @@ button.linklike {
     display: inline;
 }
 
-button.linklike:focus {
+button.linklike:focus, a.linklike:focus {
     outline: 1px dotted;
     outline-offset: 2px;
 }
 
-button.linklike:hover,
-button.linklike:active {
+button.linklike:hover, button.linklike:active,
+a.linklike:hover, a.linklike:active {
     color: var(--purple) !important;
     text-decoration: none;
 }
 
 
-.highlighted, button.linklike.highlighted {
+.highlighted, button.linklike.highlighted, a.linklike.highlighted {
     color: var(--orange) !important;
     cursor: pointer;
 }
@@ -142,12 +158,25 @@ html, body {
     min-height: 0;
 }
 
+/* Sits above the PDF embed, which claims the remaining height. */
+#cv-header {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    padding: 16px 16px 0 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: baseline;
+}
+
 #cv {
     box-sizing: border-box;
     padding-top: 10px;
     width: 100%;
     height: 100%;
     flex: 1 1 auto;
+    min-height: 0;
     display: flex;
     flex-direction: row;
     gap: 16px;

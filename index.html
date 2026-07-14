@@ -3,22 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacob Dentes</title>
-    <link rel="icon" href="assets/jd-logo.svg">
-    <link rel="stylesheet" href="assets/main.css">
+
+    <!-- The site used to route with ?loc=<view>. Those URLs may be indexed or bookmarked,
+         and GitHub Pages has no server-side redirects, so retire them here. Runs before the
+         stylesheet so the redirect happens ahead of first paint. -->
+    <script>
+        (function () {
+            var loc = new URLSearchParams(location.search).get('loc');
+            if (!loc) return;
+            var moved = {
+                home: '/',
+                publications: '/publications/',
+                cv: '/cv/',
+                hobbies: '/hobbies/',
+                'the-catch': '/hobbies/the-catch/'
+            };
+            location.replace(moved[loc] || '/');
+        })();
+    </script>
+
+    <title>Jacob Dentes — PhD Student, MIT Operations Research Center</title>
+    <meta name="description" content="Jacob Dentes is a PhD student at the MIT Operations Research Center working on first-order methods for large-scale inventory optimization on GPUs. Past work includes congestion pricing for large networks and column-generation methods for sharing the cost of wireless networks.">
+    <link rel="canonical" href="https://jacobdentes.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jacob Dentes">
+    <meta property="og:title" content="Jacob Dentes — PhD Student, MIT Operations Research Center">
+    <meta property="og:description" content="PhD student at the MIT Operations Research Center working on first-order methods for large-scale inventory optimization on GPUs.">
+    <meta property="og:url" content="https://jacobdentes.com/">
+    <meta property="og:image" content="https://jacobdentes.com/assets/home/headshot-512.png">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="/assets/jd-logo.svg">
+    <link rel="stylesheet" href="/assets/main.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jacob Dentes",
+        "url": "https://jacobdentes.com/",
+        "image": "https://jacobdentes.com/assets/home/headshot-512.png",
+        "jobTitle": "PhD Student",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "MIT Operations Research Center",
+            "url": "https://orc.mit.edu/"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Cornell University"
+        },
+        "knowsAbout": [
+            "Operations Research",
+            "Optimization",
+            "Inventory Optimization",
+            "First-order methods",
+            "Congestion pricing"
+        ],
+        "sameAs": [
+            "https://scholar.google.com/citations?user=QD8UTzMAAAAJ",
+            "https://github.com/Jacob-Dentes",
+            "https://www.linkedin.com/in/jacob-dentes-30781722a"
+        ]
+    }
+    </script>
 </head>
 <body>
     <div id="hero">
-        <div id="navigation" class="h2">
-            <button id="nav-home" class="linklike highlighted">Home</button>
-            <button id="nav-publications" class="linklike">Publications</button>
-            <button id="nav-cv" class="linklike">CV</button>
-            <button id="nav-hobbies" class="linklike">Hobbies</button>
-        </div>
+        <nav id="navigation" class="h2">
+            <a href="/" id="nav-home" class="linklike highlighted">Home</a>
+            <a href="/publications/" id="nav-publications" class="linklike">Publications</a>
+            <a href="/cv/" id="nav-cv" class="linklike">CV</a>
+            <a href="/hobbies/" id="nav-hobbies" class="linklike">Hobbies</a>
+        </nav>
         <div id="navigation-separation"></div>
 
-        <div id="content" class="view"></div>
+        <main id="content" class="view">
+            <div id="home">
+                <div class="sub-home">
+                    <img src="/assets/home/headshot-512.png"
+                         srcset="/assets/home/headshot-256.png 256w,
+                                 /assets/home/headshot-512.png 512w"
+                         sizes="256px"
+                         width="1912" height="1796"
+                         decoding="async"
+                         alt="Jacob Dentes">
+                    <h1 class="h1">Jacob Dentes</h1>
+                    <p class="h2 tagline">PhD Student</p>
+                    <a class="link" target="_blank" rel="noopener" href="https://orc.mit.edu/">Operations Research Center</a>
+                    <a class="link" target="_blank" rel="noopener" href="https://web.mit.edu/">Massachusetts Institute of Technology</a>
+                    <div style="display: flex; flex-direction: row; align-items: center; margin: 10px; gap: 5px">
+                        <a class="link" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=QD8UTzMAAAAJ">
+                            <img class="link-ico"
+                                 src="/assets/home/scholar-logo-64.png"
+                                 srcset="/assets/home/scholar-logo-64.png 64w,
+                                         /assets/home/scholar-logo.png 512w"
+                                 sizes="32px" width="32" height="32" alt="Google Scholar">
+                        </a>
+                        <a class="link" target="_blank" rel="noopener" href="https://github.com/Jacob-Dentes">
+                            <img class="link-ico"
+                                 src="/assets/home/github-logo-64.png"
+                                 srcset="/assets/home/github-logo-64.png 64w,
+                                         /assets/home/github-logo.png 240w"
+                                 sizes="32px" width="32" height="32" alt="GitHub">
+                        </a>
+                        <a class="link" target="_blank" rel="noopener" href="https://www.linkedin.com/in/jacob-dentes-30781722a">
+                            <img class="link-ico"
+                                 src="/assets/home/linkedin-logo-64.png"
+                                 srcset="/assets/home/linkedin-logo-64.png 64w,
+                                         /assets/home/linkedin-logo.png 840w"
+                                 sizes="32px" width="32" height="32" alt="LinkedIn">
+                        </a>
+                    </div>
+                </div>
+                <div class="sub-home" style="text-align: left;">
+                    <div style="width: 100%;">
+                        <h2 class="h1" style="width: 100%;">About me</h2>
+                        <p style="width: 100%; padding: 16px">
+                            My name is Jacob Dentes and I am a PhD student at the MIT Operations
+                            Research Center. I am currently working on first-order methods for
+                            large-scale inventory optimization on GPUs. My past work includes
+                            generating congestion prices for large networks and
+                            column-generation methods for sharing the cost of wireless networks.
+                        </p>
+                    </div>
+                    <div style="width: 100%;">
+                        <h2 class="h1" style="width: 100%;">Education</h2>
+                        <div style="padding: 16px">
+                            <p style="font-weight: bold; vertical-align: bottom; margin-bottom: 0">Cornell University 2021-2024</p>
+                            <p style="font-style: italic; vertical-align: top; margin: 0">B.S. in Computer Science</p>
+                            <p style="font-weight: bold; vertical-align: bottom; margin-bottom: 0">MIT 2025-Present</p>
+                            <p style="font-style: italic; vertical-align: top; margin: 0">PhD Student in Operations Research</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
