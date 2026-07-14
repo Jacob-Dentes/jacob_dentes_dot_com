@@ -108,13 +108,24 @@ html, body {
 }
 
 #navigation {
+    box-sizing: border-box;
     width: 100%;
-    margin-left: 16px;
+    /* Inset via padding, not margin: a 100% width plus a margin overflows the parent. */
+    padding-left: 16px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
     gap: 16px;
     align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    #navigation {
+        padding-left: 0;
+        gap: 12px;
+        font-size: 20px;
+    }
 }
 
 #navigation-separation {
