@@ -21,39 +21,81 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadInto(container, url) {
         if (!(url in cache)) {
             const response = await fetch(url);
+            if (!response.ok) throw new Error('Failed to load ' + url);
             cache[url] = await response.text();
         }
         container.innerHTML = cache[url];
     }
 
-    async function switchView(viewName) {
-        await loadInto(content, tabs[viewName]);
-
+    function highlight(viewName) {
         Object.entries(navButtons).forEach(([name, button]) => {
-            if (name === viewName) {
-                button.classList.add('highlighted');
-            } else {
-                button.classList.remove('highlighted');
-            }
+            button.classList.toggle('highlighted', name === viewName);
         });
     }
 
-    // Event delegation: inject Hobbies markup
+    async function showTab(viewName) {
+        await loadInto(content, tabs[viewName]);
+        highlight(viewName);
+    }
+
+    async function showWork(work) {
+        // A work lives under the Hobbies tab, so light up that nav button.
+        highlight('hobbies');
+        try {
+            await loadInto(content, 'hobbies/' + work + '.html');
+        } catch (e) {
+            // fall back to home
+            await showTab('home');
+        }
+    }
+
+    // Resolve a location string (a tab name or a work slug) to a view.
+    async function route(loc) {
+        if (loc && loc in tabs) {
+            await showTab(loc);
+        } else if (loc) {
+            await showWork(loc);
+        } else {
+            await showTab('home');
+        }
+    }
+
+    // Reflect the current location in the URL so it can be bookmarked/shared.
+    function pushLoc(loc) {
+        const url = new URL(window.location);
+        if (loc && loc !== 'home') {
+            url.searchParams.set('loc', loc);
+        } else {
+            url.searchParams.delete('loc');
+        }
+        history.pushState({ loc: loc }, '', url);
+    }
+
+    function navigate(loc) {
+        pushLoc(loc);
+        route(loc);
+    }
+
+    Object.keys(navButtons).forEach((name) => {
+        navButtons[name].addEventListener('click', () => navigate(name));
+    });
+
+    // Event delegation: clicking a work (or a "back" control) inside #content.
     content.addEventListener('click', (event) => {
         const worked = event.target.closest('[data-work]');
         if (!worked) return;
 
         const work = worked.dataset.work;
-        if (work === '__back') {
-            switchView('hobbies');
-        } else {
-            loadInto(content, 'hobbies/' + work + '.html');
-        }
+        navigate(work === '__back' ? 'hobbies' : work);
     });
 
-    Object.keys(navButtons).forEach((name) => {
-        navButtons[name].addEventListener('click', () => switchView(name));
+    // Browser back/forward buttons.
+    window.addEventListener('popstate', (event) => {
+        const loc = (event.state && event.state.loc) ||
+            new URL(window.location).searchParams.get('loc');
+        route(loc);
     });
 
-    switchView('home');
+    // Initial load: honor ?loc= if present, otherwise show Home.
+    route(new URL(window.location).searchParams.get('loc'));
 });
