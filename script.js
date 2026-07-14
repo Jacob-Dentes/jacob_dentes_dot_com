@@ -1,26 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const content = document.getElementById('content');
+
     const navButtons = {
         home: document.getElementById('nav-home'),
         publications: document.getElementById('nav-publications'),
-        cv: document.getElementById('nav-cv')
+        cv: document.getElementById('nav-cv'),
+        hobbies: document.getElementById('nav-hobbies')
     };
 
-    const views = {
-        home: document.getElementById('content-home'),
-        publications: document.getElementById('content-publications'),
-        cv: document.getElementById('content-cv')
+    const tabs = {
+        home: 'tabs/home.html',
+        publications: 'tabs/publications.html',
+        cv: 'tabs/cv.html',
+        hobbies: 'tabs/hobbies.html'
     };
 
-    function switchView(viewName) {
-        // Hide all views
-        Object.values(views).forEach(view => {
-            view.style.display = 'none';
-        });
+    // Cache fetched partials by URL so re-visiting a tab or work is instant.
+    const cache = {};
 
-        // Show the selected view
-        views[viewName].style.display = 'flex';
+    async function loadInto(container, url) {
+        if (!(url in cache)) {
+            const response = await fetch(url);
+            cache[url] = await response.text();
+        }
+        container.innerHTML = cache[url];
+    }
 
-        // Update navigation button styles
+    async function switchView(viewName) {
+        await loadInto(content, tabs[viewName]);
+
         Object.entries(navButtons).forEach(([name, button]) => {
             if (name === viewName) {
                 button.classList.add('highlighted');
@@ -30,7 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    navButtons.home.addEventListener('click', () => switchView('home'));
-    navButtons.publications.addEventListener('click', () => switchView('publications'));
-    navButtons.cv.addEventListener('click', () => switchView('cv'));
+    // Event delegation: inject Hobbies markup
+    content.addEventListener('click', (event) => {
+        const worked = event.target.closest('[data-work]');
+        if (!worked) return;
+
+        const work = worked.dataset.work;
+        if (work === '__back') {
+            switchView('hobbies');
+        } else {
+            loadInto(content, 'hobbies/' + work + '.html');
+        }
+    });
+
+    Object.keys(navButtons).forEach((name) => {
+        navButtons[name].addEventListener('click', () => switchView(name));
+    });
+
+    switchView('home');
 });

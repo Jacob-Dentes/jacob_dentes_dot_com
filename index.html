@@ -13,81 +13,11 @@
             <button id="nav-home" class="linklike highlighted">Home</button>
             <button id="nav-publications" class="linklike">Publications</button>
             <button id="nav-cv" class="linklike">CV</button>
+            <button id="nav-hobbies" class="linklike">Hobbies</button>
         </div>
         <div id="navigation-separation"></div>
 
-        <div id="content-home" class="view" style="display: flex;">
-            <div id="home">
-                <div class="sub-home">
-                    <img src="assets/headshot.png" alt="Headshot">
-                    <a class="h1">Jacob Dentes</a>
-                    <a class="h2">PhD Student</a>
-                    <a class="link" target="_blank" href="https://orc.mit.edu/">Operations Research Center</a>
-                    <a class="link" target="_blank" href="https://web.mit.edu/">Massachusetts Institute of Technology</a>
-                    <div style="display: flex; flex-direction: row; align-items: center; margin: 10px; gap: 5px">
-                        <a class="link" target="_blank" href="https://scholar.google.com/citations?user=QD8UTzMAAAAJ">
-                            <img class="link-ico" src="assets/scholar_logo.png" alt="Google Scholar">
-                        </a>
-                        <a class="link" target="_blank" href="https://github.com/Jacob-Dentes">
-                            <img class="link-ico" src="assets/github_logo.png" alt="GitHub">
-                        </a>
-                        <a class="link" target="_blank" href="https://www.linkedin.com/in/jacob-dentes-30781722a">
-                            <img class="link-ico" src="assets/linkedin_logo.png" alt="LinkedIn">
-                        </a>
-                    </div>
-                </div>
-                <div class="sub-home" style="text-align: left;">
-                    <div style="width: 100%;">
-                        <a class="h1" style="width: 100%;">About me</a>
-                        <p style="width: 100%; padding: 16px">
-                            My name is Jacob Dentes and I am a PhD student at the MIT Operations
-                            Research Center. I am currently working on first-order methods for
-                            large-scale inventory optimization on GPUs. My past work includes
-                            generating congestion prices for large networks and
-                            column-generation methods for sharing the cost of wireless networks.
-                        </p>
-                    </div>
-                    <div style="width: 100%;">
-                        <a class="h1" style="width: 100%;">Education</a>
-                        <div style="padding: 16px">
-                            <p style="font-weight: bold; vertical-align: bottom; margin-bottom: 0">Cornell University 2021-2024</p>
-                            <p style="font-style: italic; vertical-align: top; margin: 0">B.S. in Computer Science</p>
-                            <p style="font-weight: bold; vertical-align: bottom; margin-bottom: 0">MIT 2025-Present</p>
-                            <p style="font-style: italic; vertical-align: top; margin: 0">PhD Student in Operations Research</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="content-publications" class="view" style="display: none;">
-            <div id="publications" style="padding-top: 16px; text-align: left; gap: 16px; overflow-y: auto; display: flex; flex-direction: column; justify-content: flex-start;">
-                <div style="margin: 32px;">
-                    <a class="link" style="flex: 1 1 auto; width: 100%;" target="_blank" href="https://par.nsf.gov/servlets/purl/10659999">
-                        A Data-Driven Model for LoRaWAN Connection Quality and Coverage
-                    </a>
-                    <div style="margin: 16px">
-                        <p style="font-style: italic">Alfredo A Rodriguez, Sander Aarts, Ali Amadeh, Jacob Dentes, Alex Coy, Kenneth Schlather, David Shmoys, K Max Zhang</p>
-                        <p>LoRaWAN is a popular Long-Range Low-Power wireless communications protocol that is enabling many IoT applications worldwide, with more networks growing both in size and number around the world. To effectively plan and operate these networks, it is necessary to have tools that reliably quantify, measure, and predict the connection quality provided by LoRaWAN receivers. This paper proposes a novel data-driven approach to connection quality modeling that is tailored for LoRaWAN.</p>
-                    </div>
-                </div>
-                <div style="margin: 32px;">
-                    <a class="link" style="flex: 1 1 auto; width: 100%;" target="_blank" href="https://arxiv.org/pdf/2309.16914">
-                        Bounding the Price-of-Fair-Sharing Using Knapsack-Cover Constraints to Guide Near-Optimal Cost-Recovery Algorithms
-                    </a>
-                    <div style="margin: 16px">
-                        <p style="font-style: italic">Sander Aarts, Jacob Dentes, Manxi Wu, David B Shmoys</p>
-                        <p>We consider the problem of fairly allocating the cost of providing a service among a set of users, where the service cost is formulated by an NP-hard covering integer program (CIP). The central issue is to determine a cost allocation to each user that, in total, recovers as much as possible of the actual cost while satisfying a stabilizing condition known as the core property. Motivated by an application of cost allocation for network design for LPWANs, an emerging IoT technology, we investigate a general class of CIPs and give the first non-trivial price-of-fair-sharing bounds by using the natural LP relaxation strengthened with knapsack-cover inequalities</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="content-cv" class="view" style="display: none;">
-            <div id="cv">
-                <iframe src="https://docs.google.com/gview?url=https://jacobdentes.com/assets/cv.pdf&embedded=true"></iframe>
-            </div>
-        </div>
+        <div id="content" class="view"></div>
     </div>
     <script src="script.js"></script>
 </body>

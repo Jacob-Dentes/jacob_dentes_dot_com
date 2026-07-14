@@ -151,6 +151,65 @@ html, body {
     flex: 1 1 auto;
 }
 
+#hobbies {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+    padding-top: 16px;
+    text-align: left;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.work {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px 48px 48px 48px;
+    text-align: left;
+    overflow-y: auto;
+    flex: 1 1 auto;
+}
+
+.work p {
+    line-height: 1.7;
+    margin: 0 0 1em 0;
+}
+
+.work-entry .linklike {
+    color: var(--aqua);
+    font-size: 25px;
+}
+
+.work .scene-break {
+    border: none;
+    width: 80%;
+    margin: 28px auto;
+    border-top: 1px solid var(--fg1);
+}
+
+.work-art {
+    margin: 32px 0 0 0;
+    text-align: center;
+}
+
+.work-art img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.work-art figcaption {
+    margin-top: 8px;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--fg1);
+}
+
 #home {
     box-sizing: border-box;
     padding-top: 10px;
